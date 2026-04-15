@@ -1,9 +1,9 @@
 services:
   injector:
+    image: ns-injector:1.0.0
     build: .
     container_name: ns-injector
-    ports:
-      - "8000:8000"
+    network_mode: host
     volumes:
       - ./config:/app/config:ro
     env_file:
@@ -11,8 +11,6 @@ services:
     environment:
       - CONFIG_FILE=/app/config/endpoints.json
     restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
     read_only: true
     tmpfs:
       - /tmp
