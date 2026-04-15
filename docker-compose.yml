@@ -1,39 +1,27 @@
 services:
   injector:
     build: .
-    container_name: js-injector
-    networks:
-      - app_network
-    expose:
-      - "8000"
+    container_name: ns-injector
+    ports:
+      - "8000:8000"
     volumes:
       - ./config:/app/config:ro
+    env_file:
+      - .env
     environment:
       - CONFIG_FILE=/app/config/endpoints.json
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
-    # Ensure container root filesystem is read-only
     read_only: true
     tmpfs:
       - /tmp
+    mem_limit: 256m
+    cpus: 0.5
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/default')"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 5s
       start_interval: 1s
-
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.js-injector.rule=Host(`${SERVICE_DOMAIN}`)"
-      - "traefik.http.routers.js-injector.entrypoints=websecure"
-      - "traefik.http.routers.js-injector.tls.certresolver=letsencrypt"
-      - "traefik.http.services.js-injector.loadbalancer.server.port=8000"
-      - "traefik.docker.network=${DOCKER_NETWORK}"
-
-networks:
-  app_network:
-    external: true
-    name: ${DOCKER_NETWORK}
