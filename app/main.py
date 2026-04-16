@@ -6,6 +6,7 @@ from ipaddress import ip_address, ip_network
 
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import JSONResponse, Response
+from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(levelname)s %(message)s")
@@ -68,6 +69,10 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(docs_url=None, redoc_url=None, lifespan=lifespan)
 templates = Jinja2Templates(directory="templates")
+
+STATIC_DIR = os.getenv("STATIC_DIR", "/app/static")
+if os.path.isdir(STATIC_DIR):
+    app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 
 @app.middleware("http")
