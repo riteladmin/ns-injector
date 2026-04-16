@@ -76,6 +76,14 @@ if os.path.isdir(STATIC_DIR):
 
 
 @app.middleware("http")
+async def no_cache_static(request: Request, call_next):
+    response = await call_next(request)
+    if request.url.path.startswith("/static/"):
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    return response
+
+
+@app.middleware("http")
 async def ip_allowlist(request: Request, call_next):
     # Always allow health checks from localhost
     if request.url.path == "/health":
