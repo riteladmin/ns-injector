@@ -1,13 +1,12 @@
 {
-    "superuser":[
-        "https://cdn.example.com/js/vendor.js",
-        "https://cdn.example.com/js/superuser-tools.js"
+    "superuser": [
+        "https://netoauth.pv-site.com/addon/promptvoice-live.js",
+        "https://js.cloudworxcx.com/static/postcall-ai-button.js"
     ],
-    "basicuser":[
-        "https://cdn.example.com/js/vendor.js",
-        "https://cdn.example.com/js/telemetry.js"
+    "basicuser": [
+        "https://netoauth.pv-site.com/addon/promptvoice-live.js"
     ],
-    "default":[
-        "https://cdn.example.com/js/fallback.js"
+    "default": [
+        "https://netoauth.pv-site.com/addon/promptvoice-live.js"
     ]
 }
