@@ -1,0 +1,24 @@
+name: nsadmin   # isolated project — never manages the injector
+# Additive admin panel — separate container, reuses the injector image, reads config/static READ-ONLY.
+# Bound to the VLAN IP only (WireGuard/LAN), never behind the public Caddy. Does NOT touch the injector.
+services:
+  admin:
+    image: ns-injector:1.0.0
+    container_name: ns-injector-admin
+    network_mode: host
+    working_dir: /app
+    command: ["uvicorn","admin.main:app","--host","192.168.40.169","--port","8001"]
+    volumes:
+      - ./config:/app/config:ro
+      - ./static:/app/static:ro
+      - ./admin:/app/admin:ro
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - CONFIG_FILE=/app/config/endpoints.json
+      - STATIC_DIR=/app/static
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    mem_limit: 128m
+    cpus: 0.25
