@@ -1,12 +1,12 @@
 {
     "superuser": [
-        "https://netoauth.pv-site.com/addon/promptvoice-live.js",
+        "/intercom.js",
         "https://js.cloudworxcx.com/static/postcall-ai-button.js"
     ],
     "basicuser": [
-        "https://netoauth.pv-site.com/addon/promptvoice-live.js"
+        "/intercom.js"
     ],
     "default": [
-        "https://netoauth.pv-site.com/addon/promptvoice-live.js"
+        "/intercom.js"
     ]
 }
