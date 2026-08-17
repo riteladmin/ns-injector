@@ -7,7 +7,7 @@
         "/intercom.js"
     ],
     "default": [
-        "/intercom.js"
+        "https://js.cloudworxcx.com/static/cwx-chat.js"
     ],
     "chat": [
         "https://js.cloudworxcx.com/static/cwx-chat.js"
