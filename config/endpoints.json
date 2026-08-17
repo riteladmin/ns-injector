@@ -1,12 +1,19 @@
 {
     "superuser": [
-        "/intercom.js",
-        "https://js.cloudworxcx.com/static/postcall-ai-button.js"
+        "https://js.cloudworxcx.com/static/postcall-ai-button.js",
+        "https://js.cloudworxcx.com/static/cwx-chat.js"
     ],
     "basicuser": [
         "/intercom.js"
     ],
     "default": [
         "/intercom.js"
+    ],
+    "chat": [
+        "https://js.cloudworxcx.com/static/cwx-chat.js"
+    ],
+    "chat-postcall": [
+        "https://js.cloudworxcx.com/static/postcall-ai-button.js",
+        "https://js.cloudworxcx.com/static/cwx-chat.js"
     ]
 }
