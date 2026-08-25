@@ -4,7 +4,7 @@
         "https://js.cloudworxcx.com/static/cwx-chat.js"
     ],
     "basicuser": [
-        "/intercom.js"
+        "https://js.cloudworxcx.com/static/cwx-chat.js"
     ],
     "default": [
         "https://js.cloudworxcx.com/static/cwx-chat.js"
