@@ -15,5 +15,9 @@
     "chat-postcall": [
         "https://js.cloudworxcx.com/static/postcall-ai-button.js",
         "https://js.cloudworxcx.com/static/cwx-chat.js"
+    ],
+    "chat-test": [
+        "https://js.cloudworxcx.com/static/postcall-ai-button.js",
+        "https://js.cloudworxcx.com/static/cwx-chat-test.js"
     ]
 }
